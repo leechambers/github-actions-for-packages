@@ -48,7 +48,7 @@ jobs:
   Build-and-Push-Docker-Image:
     runs-on: ubuntu-latest
     needs: test
-    name: Docker Build, Tag, Push
+    name: Docker Build and Push
 
     steps:
     - name: Checkout
@@ -60,9 +60,3 @@ jobs:
         path: public
     - name: Build container image
       uses: docker/build-push-action@v2
-      with:
-        username: ${{github.actor}}
-        password: ${{secrets.GITHUB_TOKEN}}
-        registry: docker.pkg.github.com
-        repository: leechambers/github-actions-for-packages/tic-tac-toe
-        tag_with_sha: true
